@@ -1,0 +1,16 @@
+class Solution:
+    def getFinalState(self, nums: List[int], k: int, multiplier: int) -> List[int]:
+        pq = []
+        for i, num in enumerate(nums):
+            heappush(pq, (num, i))
+        while k>0:
+            val,idx=heappop(pq)
+            val*=multiplier
+            heappush(pq,(val,idx))
+            k-=1
+        while pq:
+            val,idx=heappop(pq)
+            nums[idx]=val
+        return nums
+
+        
